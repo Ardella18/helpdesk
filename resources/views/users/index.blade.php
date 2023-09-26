@@ -103,7 +103,8 @@
 
                     //ajax delete
                     jQuery.ajax({
-                        url: "{{ route("users.index") }}/"+id,
+                        url: "{{ route('users.index') }}/" + id,
+
                         data:   {
                             "id": id,
                             "_token": token

@@ -18,7 +18,7 @@
                   </div>
                   <div class="card-wrap">
                     <div class="card-header">
-                      <h4>TIKET BULAN INI</h4>
+                      <h4>BELUM DIPROSES</h4>
                     </div>
                     <div class="card-body">
                       {{ $report->getMonthlyTickets() ?? '0' }}
@@ -34,7 +34,7 @@
                   </div>
                   <div class="card-wrap">
                     <div class="card-header">
-                      <h4>SLA TERLAMPAUI</h4>
+                      <h4>SEDANG DIPROSES</h4>
                     </div>
                     <div class="card-body">
                       {{ $report->getOverdueTickets('red') ?? '0' }}
@@ -50,7 +50,7 @@
                   </div>
                   <div class="card-wrap">
                     <div class="card-header">
-                      <h4>MENDEKATI SLA</h4>
+                      <h4>TIDAK TERATASI</h4>
                     </div>
                     <div class="card-body">
                       {{ $report->getOverdueTickets('yellow') ?? '0' }}
@@ -66,7 +66,7 @@
                   </div>
                   <div class="card-wrap">
                     <div class="card-header">
-                      <h4>TIKET SELESAI</h4>
+                      <h4>SELESAI</h4>
                     </div>
                     <div class="card-body">
                       {{ $report->getMonthlyDoneTickets() ?? '0' }}
