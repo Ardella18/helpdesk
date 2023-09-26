@@ -4,21 +4,22 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class UserTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
+        // Membuat peran jika belum ada
+        $role = Role::firstOrCreate(['name' => 'NamaPeranAnda']);
         
-        $role = Role::find(1);
-        $permissions = Permission::where('name', 'permissions.index');
-        $role->givePermissionTo($permissions);
+        // Mengaitkan izin dengan peran
+        $permissions = Permission::where('name', 'permissions.index')->first();
+        
+        if ($permissions && $role) {
+            $role->givePermissionTo($permissions);
+        }
     }
 }
+
