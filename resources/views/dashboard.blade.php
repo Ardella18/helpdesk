@@ -50,7 +50,7 @@
                   </div>
                   <div class="card-wrap">
                     <div class="card-header">
-                      <h4>TIDAK TERATASI</h4>
+                      <h4>PENDING</h4>
                     </div>
                     <div class="card-body">
                       {{ $report->getOverdueTickets('yellow') ?? '0' }}

@@ -11,20 +11,20 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4><i class="fas fa-bell"></i> Berita</h4>
+                    <h4><i class="fas fa-bell"></i> Customers</h4>
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('news.index') }}" method="GET">
+                    <form action="{{ route('customers.index') }}" method="GET">
                         <div class="form-group">
                             <div class="input-group mb-3">
-                                @can('news.create')
+                                @can('customers.create')
                                     <div class="input-group-prepend">
-                                        <a href="{{ route('news.create') }}" class="btn btn-primary" style="padding-top: 10px;"><i class="fa fa-plus-circle"></i> TAMBAH</a>
+                                        <a href="{{ route('customers.create') }}" class="btn btn-primary" style="padding-top: 10px;"><i class="fa fa-plus-circle"></i> TAMBAH</a>
                                     </div>
                                 @endcan
                                 <input type="text" class="form-control" name="q"
-                                       placeholder="cari berdasarkan judul berita">
+                                       placeholder="cari berdasarkan nama customer">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> CARI
                                     </button>
@@ -37,32 +37,36 @@
                             <thead>
                             <tr>
                                 <th scope="col" style="text-align: center;width: 6%">NO.</th>
-                                <th scope="col">JUDUL</th>
-                                <th scope="col">ISI</th>
-                                <th scope="col">PENULIS</th>
-                                <th scope="col">DIBUAT</th>
-                                <th scope="col">DIUPDATE</th>
+                                <th scope="col">NAMA</th>
+                                <th scope="col">ALAMAT</th>
+                                <th scope="col">TELEPON</th>
+                                <th scope="col">EMAIL</th>
+                                <th scope="col">PIC</th>
+                                <th scope="col">SALES</th>
+                                <th scope="col">PRODUCT</th>
                                 <th scope="col" style="width: 15%;text-align: center">AKSI</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($news as $no => $item)
+                            @foreach ($customers as $no => $customer)
                                 <tr>
-                                    <th scope="row" style="text-align: center">{{ ++$no + ($news->currentPage()-1) * $news->perPage() }}</th>
-                                    <td>{{ $item->title }}</td>
-                                    <td>{{ $item->detail }}</td>
-                                    <td>{{ $user->getName($item->user_id) }}</td>
-                                    <td>{{ $item->created_at }}</td>
-                                    <td>{{ $item->updated_at }}</td>
+                                    <th scope="row" style="text-align: center">{{ ++$no + ($customers->currentPage()-1) * $customers->perPage() }}</th>
+                                    <td>{{ $customer->name }}</td>
+                                    <td>{{ $customer->address }}</td>
+                                    <td>{{ $customer->phone }}</td>
+                                    <td>{{ $customer->email }}</td>
+                                    <td>{{ $customer->pic }}</td>
+                                    <td>{{ $customer->salesperson }}</td>
+                                    <td>{{ $customer->product }}</td>
                                     <td class="text-center">
-                                        @can('news.edit')
-                                            <a href="{{ route('news.edit', $item->id) }}" class="btn btn-sm btn-primary">
+                                        @can('customers.edit')
+                                            <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-sm btn-primary">
                                                 <i class="fa fa-pencil-alt"></i>
                                             </a>
                                         @endcan
 
-                                        @can('news.delete')
-                                            <button onClick="Delete(this.id)" class="btn btn-sm btn-danger" id="{{ $item->id }}">
+                                        @can('customers.delete')
+                                            <button onClick="Delete(this.id)" class="btn btn-sm btn-danger" id="{{ $customer->id }}">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         @endcan
@@ -72,7 +76,7 @@
                             </tbody>
                         </table>
                         <div style="text-align: center">
-                            {{$news->links("vendor.pagination.bootstrap-4")}}
+                            {{$customers->links("vendor.pagination.bootstrap-4")}}
                         </div>
                     </div>
                 </div>
@@ -103,7 +107,7 @@
 
                     //ajax delete
                     jQuery.ajax({
-                        url: "{{ route("news.index") }}/"+id,
+                        url: "{{ route('customers.index') }}/" + id,
                         data:     {
                             "id": id,
                             "_token": token

@@ -87,7 +87,7 @@
                         <li class="{{ setActive('/news') }}">
                             <a class="nav-link" href="{{ route('news.index') }}">
                                 <i class="fas fa-newspaper"></i>
-                                <span>News</span>
+                                <span>Klasifikasi</span>
                             </a>
                         </li>
                         @endcan
@@ -105,7 +105,7 @@
                         <li class="{{ setActive('/customers') }}">
                             <a class="nav-link" href="{{ route('customers.index') }}">
                                 <i class="fas fa-user-tie"></i>
-                                <span>Customers</span>
+                                <span>Pelanggan</span>
                             </a>
                         </li> 
                         @endcan
